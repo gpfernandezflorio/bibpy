@@ -51,7 +51,7 @@ def listaDeCarpetasEn_(ruta):
     @param ruta : string
     @tipo [string]
   '''
-  return filtrar(lambda x : existeCarpeta_(nuevaRuta_(ruta, x)), listaDeArchivosYCarpetasEn_(ruta))
+  return filtrar(lambda x : existeCarpeta_En_(x, ruta), listaDeArchivosYCarpetasEn_(ruta))
 
 def nuevaRuta_(ruta1, ruta2):
   ''' Obtener una ruta compuesta de las 2 rutas dadas.
