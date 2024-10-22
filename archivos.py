@@ -1,5 +1,5 @@
 import os, io, shutil
-from listas import filtrar
+from .listas import filtrar
 
 def carpetaActual():
   ''' Obtener la ruta absoluta a la carpeta global
@@ -70,7 +70,7 @@ def existeArchivo_En_(nombre, ruta):
       Puede ser una ruta absoluta o relativa a la carpeta actual.
     @tipo booleano
   '''
-  return os.path.isfile(nuevaRuta_(nombre, ruta))
+  return os.path.isfile(nuevaRuta_(ruta, nombre))
 
 def existeCarpeta_En_(nombre, ruta):
   ''' Indicar si existe una carpeta con el nombre dado desde la carpeta de la ruta dada.
@@ -80,7 +80,7 @@ def existeCarpeta_En_(nombre, ruta):
       Puede ser una ruta absoluta o relativa a la carpeta actual.
     @tipo booleano
   '''
-  return os.path.isdir(nuevaRuta_(nombre, ruta))
+  return os.path.isdir(nuevaRuta_(ruta, nombre))
 
 def contenidoDe_(ruta):
   ''' Obtener el contenido del archivo en la ruta dada como texto plano.
@@ -93,7 +93,7 @@ def contenidoDe_(ruta):
   f.close()
   return contenido
 
-  def rutaAbsolutaA_(ruta):
+def rutaAbsolutaA_(ruta):
   ''' Obtener la ruta absoluta para la ruta dada.
   @pre la ruta dada es la ruta relativa a una carpeta o un archivo que existe desde la carpeta actual.
   @param ruta : string
@@ -125,8 +125,7 @@ def rutaRaizDe_(ruta):
     @tipo string
   '''
   nombre = os.path.basename(ruta)
-  return os.path.dirname(os.path.dirname(ruta)) if len(nombre) == 0
-    else os.path.dirname(ruta)
+  return os.path.dirname(os.path.dirname(ruta)) if len(nombre) == 0 else os.path.dirname(ruta)
 
 def CrearCarpeta_En_(nombre, ruta):
   ''' Crear una carpeta con el nombre dado en la carpeta de la ruta dada.
@@ -136,7 +135,7 @@ def CrearCarpeta_En_(nombre, ruta):
   '''
   os.mkdir(nuevaRuta_(ruta, nombre))
 
-  def listaDeArchivosYCarpetasEn_(ruta):
+def listaDeArchivosYCarpetasEn_(ruta):
   ''' Obtener la lista de nombres de archivos y carpetas en la carpeta que está en ruta dada.
     @pre a ruta dada es la ruta a una carpeta que existe y para la cual se tiene acceso.
     @param ruta : string
