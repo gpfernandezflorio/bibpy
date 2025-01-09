@@ -135,6 +135,17 @@ def CrearCarpeta_En_(nombre, ruta):
   '''
   os.mkdir(nuevaRuta_(ruta, nombre))
 
+def CrearArchivo_En_Con_(nombre, ruta, contenido):
+  ''' Crear un archivo con el nombre dado en la carpeta de la ruta dada y escribir en él el contenido dado.
+    @ore no existe un archivo con el nombre dado en la carpeta dada.
+    @param nombre : string
+    @param ruta : string
+    @param contenido : string
+  '''
+  f = io.open(nuevaRuta_(ruta, nombre), 'w',  encoding="utf-8")
+  f.write(contenido)
+  f.close()
+
 def listaDeArchivosYCarpetasEn_(ruta):
   ''' Obtener la lista de nombres de archivos y carpetas en la carpeta que está en ruta dada.
     @pre a ruta dada es la ruta a una carpeta que existe y para la cual se tiene acceso.
