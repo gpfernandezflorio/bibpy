@@ -1,5 +1,5 @@
 import os, io, shutil
-from .listas import filtrar
+from .listas import *
 
 def carpetaActual():
   ''' Obtener la ruta absoluta a la carpeta global
@@ -147,9 +147,19 @@ def CrearArchivo_En_Con_(nombre, ruta, contenido):
   f.close()
 
 def listaDeArchivosYCarpetasEn_(ruta):
-  ''' Obtener la lista de nombres de archivos y carpetas en la carpeta que está en ruta dada.
+  ''' Obtener la lista de nombres de archivos y carpetas en la carpeta que está en la ruta dada.
     @pre a ruta dada es la ruta a una carpeta que existe y para la cual se tiene acceso.
     @param ruta : string
     @tipo [string]
   '''
   return os.listdir(ruta)
+
+def todosLosArchivosEn_(ruta):
+  ''' Obtener la lista de nombres de todos los archivos que están en la carpeta de la ruta dada o en sus subcarpetas.
+    @pre a ruta dada es la ruta a una carpeta que existe y para la cual se tiene acceso.
+    @param ruta : string
+    @tipo [string]
+  '''
+  archivos = listaDeArchivosEn_(ruta)
+  carpetas = listaDeCarpetasEn_(ruta)
+  return mapear(lambda x : nuevaRuta_(ruta, x), fold(lambda rec, x : rec + todosLosArchivosEn_(nuevaRuta_(ruta, x)), archivos, carpetas))
