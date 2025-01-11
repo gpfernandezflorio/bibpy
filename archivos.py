@@ -160,6 +160,6 @@ def todosLosArchivosEn_(ruta):
     @param ruta : string
     @tipo [string]
   '''
-  archivos = listaDeArchivosEn_(ruta)
+  archivos = mapear(lambda x : nuevaRuta_(ruta, x), listaDeArchivosEn_(ruta))
   carpetas = listaDeCarpetasEn_(ruta)
-  return mapear(lambda x : nuevaRuta_(ruta, x), fold(lambda rec, x : rec + todosLosArchivosEn_(nuevaRuta_(ruta, x)), archivos, carpetas))
+  return fold(lambda rec, x : rec + todosLosArchivosEn_(nuevaRuta_(ruta, x)), archivos, carpetas)
