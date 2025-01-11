@@ -35,3 +35,51 @@ def fold1(f, lista):
   @tipo A
   '''
   return reduce(f, lista)
+
+def elementosDespuesDe_(lista, elemento):
+  ''' Obtener los elementos de la lista dada que están después de la primera aparición del elemento dado.
+  @pre el elemento aparece al menos una vez en la lista.
+  @param lista : [A]
+  @param elemento : A
+  @tipo [A]
+  '''
+  i = 0
+  while lista[i] != elemento:
+    i += 1
+  return lista[i+1:]
+
+def elementosDesde_(lista, elemento):
+  ''' Obtener los elementos de la lista dada desde de la primera aparición del elemento dado.
+  @pre el elemento aparece al menos una vez en la lista.
+  @param lista : [A]
+  @param elemento : A
+  @tipo [A]
+  '''
+  i = 0
+  while lista[i] != elemento:
+    i += 1
+  return lista[i:]
+
+def elementosAntesDe_(lista, elemento):
+  ''' Obtener los elementos de la lista dada que están antes de la primera aparición del elemento dado.
+  @pre el elemento aparece al menos una vez en la lista.
+  @param lista : [A]
+  @param elemento : A
+  @tipo [A]
+  '''
+  i = 0
+  while lista[i] != elemento:
+    i += 1
+  return lista[0:i]
+
+def elementosHasta_(lista, elemento):
+  ''' Obtener los elementos de la lista dada hasta la primera aparición del elemento dado.
+  @pre el elemento aparece al menos una vez en la lista.
+  @param lista : [A]
+  @param elemento : A
+  @tipo [A]
+  '''
+  i = 0
+  while lista[i] != elemento:
+    i += 1
+  return lista[0:i+1]
